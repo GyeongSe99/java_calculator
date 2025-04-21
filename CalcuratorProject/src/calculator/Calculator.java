@@ -15,6 +15,8 @@ public class Calculator {
 
         System.out.println(num1);
         System.out.println(num2);
+
+        char operator = getOperator("사칙연산 기호를 입력하세요: ");
     }
 
     private static int getPositiveInteger(String prompt) {
@@ -34,6 +36,20 @@ public class Calculator {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private static char getOperator(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String line = SCANNER.nextLine().trim();
+            if (line.length() == 1) {
+                char op = line.charAt(0);
+                if (op == '+' || op == '-' || op == '*' || op == '/') {
+                    return op;
+                }
+            }
+            System.out.println("[Error] : 유효한 사칙연산 기호를 입력해주세요. (+, -, *, /)");
         }
     }
 }
