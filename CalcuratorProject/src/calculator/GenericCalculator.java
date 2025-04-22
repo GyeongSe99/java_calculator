@@ -25,7 +25,6 @@ public class GenericCalculator {
                 if (doubleNum2 == 0) {
                     throw new ArithmeticException("0으로 나눌 수 없습니다.");
                 }
-
                 result = doubleNum1 / doubleNum2;
                 break;
             default:
@@ -53,6 +52,14 @@ public class GenericCalculator {
 
     public void deleteFirstResult() {
         this.results.remove(0);
+    }
+
+    public void printResultsGreaterThan(double num) {
+        System.out.printf("기준값(%f)보다 큰 결과들: \n", num);
+        results.stream()
+                .filter(r -> r > num)
+                .forEach(r -> System.out.print(" " + r));
+        System.out.println();
     }
 
 
