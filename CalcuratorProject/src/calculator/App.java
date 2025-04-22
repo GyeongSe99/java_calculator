@@ -1,69 +1,33 @@
 package calculator;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class App {
 
     private static final Scanner SCANNER = new Scanner(System.in);
+    private static final Calculator CALCULATOR = new Calculator();
+    private static final DecimalFormat df = new DecimalFormat();
 
     public static void main(String[] args) {
         System.out.println("Hello, App!");
-
         while (true) {
             System.out.println("계산을 중단하려면 exit 를 입력해주세요.");
 
             int num1 = getPositiveInteger("첫 번째 숫자를 입력하세요. (exit입력 시 종료): ");
-            int num2 = getPositiveInteger("두 번째 숫자를 입력하세요: (exit입력 시 종료)");
+            int num2 = getPositiveInteger("두 번째 숫자를 입력하세요. (exit입력 시 종료): ");
 
-            char operator = getOperator("사칙연산 기호를 입력하세요: (exit입력 시 종료)");
+            char operator = getOperator("사칙연산 기호를 입력하세요. (exit입력 시 종료): ");
 
-            try {
-                switch (operator) {
-                    case '+':
-                        System.out.printf("[결과] %d + %d = %d%n", num1, num2, add(num1, num2));
-                        break;
-                    case '-':
-                        System.out.printf("[결과] %d - %d = %d%n", num1, num2, subtract(num1, num2));
-                        break;
-                    case '*':
-                        System.out.printf("[결과] %d * %d = %d%n", num1, num2, multiply(num1, num2));
-                        break;
-                    case '/':
-                        System.out.printf("[결과] %d / %d = %f%n", num1, num2, divide(num1, num2));
-                        break;
-                    default:
-                        System.out.println("[Error] : 알 수 없는 연산자입니다.");
-                }
-            } catch (ArithmeticException e) {
-                System.out.println("[Error] : " + e.getMessage());
-            } catch (Exception e) {
-                System.out.println("[Error] : 연산 중 오류가 발생했습니다. (" + e.getMessage() + ")");
+            double  result = CALCULATOR.calculate(num1, num2, operator);
+
+            System.out.printf("[결과] %d %s %d = %s \n", num1, operator, num2, df.format(result));
+
+            for (double n : CALCULATOR.results) {
+                System.out.print(n + " ");
             }
-
-
         }
 
-
-//        SCANNER.close();
-    }
-
-    private static int add(int a, int b) {
-        return a + b;
-    }
-
-    private static int subtract(int a, int b) {
-        return a - b;
-    }
-
-    private static int multiply(int a, int b) {
-        return a * b;
-    }
-
-    private static double divide(int a, int b) {
-        if (b == 0) {
-            throw new ArithmeticException("0으로 나눌 수 없습니다.");
-        }
-        return (double) a / b;
     }
 
     private static int getPositiveInteger(String prompt) {
