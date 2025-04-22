@@ -12,19 +12,15 @@ public class Calculator {
             switch (operator) {
                 case '+':
                     result = add(num1, num2);
-
                     break;
                 case '-':
                     result = subtract(num1, num2);
-                    results.add(result);
                     break;
                 case '*':
                     result = multiply(num1, num2);
-                    results.add(result);
                     break;
                 case '/':
                     result = divide(num1, num2);
-                    results.add(result);
                     break;
                 default:
                     System.out.println("[Error] : 알 수 없는 연산자입니다.");
