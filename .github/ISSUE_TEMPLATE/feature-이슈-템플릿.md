@@ -11,5 +11,5 @@ assignees: GyeongSe99
 > (설명)
 
 ## 작업 상세 내용
-[] TODO
-[] TODO
+- [ ] TODO
+- [ ] TODO
