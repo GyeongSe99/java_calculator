@@ -1,10 +1,12 @@
 package calculator;
 
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.List;
 
 public class GenericCalculator {
     private final List<Double> results;
+    private static final DecimalFormat df = new DecimalFormat();
 
     public <S extends Number, U extends Number> double calculate(S num1, U num2, char operator) {
         double doubleNum1 = num1.doubleValue();
@@ -55,10 +57,10 @@ public class GenericCalculator {
     }
 
     public void printResultsGreaterThan(double num) {
-        System.out.printf("기준값(%f)보다 큰 결과들: \n", num);
+        System.out.printf("기준값(%s)보다 큰 결과들: \n", df.format(num));
         results.stream()
                 .filter(r -> r > num)
-                .forEach(r -> System.out.print(" " + r));
+                .forEach(r -> System.out.print(" " + df.format(r)));
         System.out.println();
     }
 
