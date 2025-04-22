@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Calculator {
@@ -36,7 +37,7 @@ public class Calculator {
     }
 
     public Calculator() {
-        this.results = new ArrayList<>();
+        this.results = new LinkedList<>();
     }
 
     public List<Double> getResults() {
@@ -48,6 +49,10 @@ public class Calculator {
         if (newResults != null) {
             this.results.addAll(newResults);
         }
+    }
+
+    public void deleteFirstResult() {
+        this.results.remove(0);
     }
 
     private int add(int a, int b) {
