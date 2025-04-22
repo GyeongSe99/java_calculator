@@ -23,9 +23,6 @@ public class App {
 
             System.out.printf("[결과] %d %s %d = %s \n", num1, operator, num2, df.format(result));
 
-            for (double n : CALCULATOR.results) {
-                System.out.print(n + " ");
-            }
         }
 
     }
