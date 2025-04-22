@@ -8,27 +8,21 @@ public class Calculator {
 
     public double calculate(int num1, int num2, char operator) {
         double result = 0;
-        try {
-            switch (operator) {
-                case '+':
-                    result = add(num1, num2);
-                    break;
-                case '-':
-                    result = subtract(num1, num2);
-                    break;
-                case '*':
-                    result = multiply(num1, num2);
-                    break;
-                case '/':
-                    result = divide(num1, num2);
-                    break;
-                default:
-                    System.out.println("[Error] : 알 수 없는 연산자입니다.");
-            }
-        } catch (ArithmeticException e) {
-            System.out.println("[Error] : " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("[Error] : 연산 중 오류가 발생했습니다. (" + e.getMessage() + ")");
+        switch (operator) {
+            case '+':
+                result = add(num1, num2);
+                break;
+            case '-':
+                result = subtract(num1, num2);
+                break;
+            case '*':
+                result = multiply(num1, num2);
+                break;
+            case '/':
+                result = divide(num1, num2);
+                break;
+            default:
+                System.out.println("[Error] : 알 수 없는 연산자입니다.");
         }
 
         this.results.add(result);
