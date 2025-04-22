@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    List<Double> results = new ArrayList<>();
+    private final List<Double> results;
 
     public double calculate(int num1, int num2, char operator) {
         double result = 0;
@@ -31,8 +31,23 @@ public class Calculator {
             System.out.println("[Error] : 연산 중 오류가 발생했습니다. (" + e.getMessage() + ")");
         }
 
-        results.add(result);
+        this.results.add(result);
         return result;
+    }
+
+    public Calculator() {
+        this.results = new ArrayList<>();
+    }
+
+    public List<Double> getResults() {
+        return this.results;
+    }
+
+    public void setResults(List<Double> newResults) {
+        this.results.clear();
+        if (newResults != null) {
+            this.results.addAll(newResults);
+        }
     }
 
     private int add(int a, int b) {
