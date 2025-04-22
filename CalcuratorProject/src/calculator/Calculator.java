@@ -8,18 +8,19 @@ public class Calculator {
 
     public double calculate(int num1, int num2, char operator) {
         double result = 0;
+
         switch (operator) {
             case '+':
-                result = add(num1, num2);
+                result = this.add(num1, num2);
                 break;
             case '-':
-                result = subtract(num1, num2);
+                result = this.subtract(num1, num2);
                 break;
             case '*':
-                result = multiply(num1, num2);
+                result = this.multiply(num1, num2);
                 break;
             case '/':
-                result = divide(num1, num2);
+                result = this.divide(num1, num2);
                 break;
             default:
                 System.out.println("[Error] : 알 수 없는 연산자입니다.");
