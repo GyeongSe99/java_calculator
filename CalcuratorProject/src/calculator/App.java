@@ -7,6 +7,7 @@ public class App {
 
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final Calculator CALCULATOR = new Calculator();
+    private static final ArithmeticCalculator ARITHMETRIC_CALCULATOR = new ArithmeticCalculator();
     private static final DecimalFormat df = new DecimalFormat();
 
     public static void main(String[] args) {
@@ -18,13 +19,18 @@ public class App {
             int num2 = getPositiveInteger("두 번째 숫자를 입력하세요. (exit입력 시 종료): ");
 
             char operator = getOperator("사칙연산 기호를 입력하세요. (exit입력 시 종료): ");
+            try {
+                double result = CALCULATOR.calculate(num1, num2, operator);
+                double result2 = ARITHMETRIC_CALCULATOR.calculate(num1, num2, operator);
 
-            double  result = CALCULATOR.calculate(num1, num2, operator);
-
-            System.out.printf("[결과] %d %s %d = %s \n", num1, operator, num2, df.format(result));
-
+                System.out.printf("[결과] %d %s %d = %s \n", num1, operator, num2, df.format(result));
+                System.out.printf("[결과] %d %s %d = %s \n", num1, operator, num2, df.format(result2));
+            } catch (ArithmeticException e) {
+                System.out.println("[Error] : " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("[Error] : 연산 중 오류가 발생했습니다. (" + e.getMessage() + ")");
+            }
         }
-
     }
 
     private static int getPositiveInteger(String prompt) {
