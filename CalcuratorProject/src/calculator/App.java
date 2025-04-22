@@ -7,7 +7,7 @@ public class App {
 
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final Calculator CALCULATOR = new Calculator();
-    private static final ArithmeticCalculator ARITHMETRIC_CALCULATOR = new ArithmeticCalculator();
+    private static final ArithmeticCalculator ARITHMETIC_CALCULATOR = new ArithmeticCalculator();
     private static final DecimalFormat df = new DecimalFormat();
 
     public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class App {
             char operator = getOperator("사칙연산 기호를 입력하세요. (exit입력 시 종료): ");
             try {
                 double result = CALCULATOR.calculate(num1, num2, operator);
-                double result2 = ARITHMETRIC_CALCULATOR.calculate(num1, num2, operator);
+                double result2 = ARITHMETIC_CALCULATOR.calculate(num1, num2, operator);
 
                 System.out.printf("[결과] %d %s %d = %s \n", num1, operator, num2, df.format(result));
                 System.out.printf("[결과] %d %s %d = %s \n", num1, operator, num2, df.format(result2));
